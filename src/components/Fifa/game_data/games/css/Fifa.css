@@ -1,0 +1,92 @@
+/* image couresel */
+/* .images {
+	flex: 4;
+	overflow: hidden;
+}
+
+.images img {
+	width: 22rem !important;
+	height: 100%;
+	border-radius: 4px;
+	margin: 0 1rem !important;
+}
+
+.slider__images {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	animation: slide 11s infinite alternate;
+}
+
+@keyframes slide {
+	0% {
+		transform: translateX();
+	}
+
+	50% {
+		transform: translateX(-100%);
+	}
+	75% {
+		transform: translateX(-200%);
+	}
+
+	100% {
+		transform: translateX(-300%);
+	}
+} */
+/* game stats */
+.game__stats {
+	flex: 6;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+		rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+	background: linear-gradient(
+		hsl(623, 26%, 15%) 40%,
+		hsl(442, 20%, 76%)
+	);
+	padding: 0.7rem;
+}
+
+.form_d {
+	max-width: 800px !important;
+	min-height: 30rem;
+}
+
+.category {
+	display: flex;
+	height: 3rem;
+	width: 100%;
+	align-items: center;
+}
+.category button {
+	width: 50%;
+	color: red;
+	padding: 0.7rem;
+	background: transparent;
+	font-weight: bold;
+	margin: 0 1.5rem 0 0.5rem;
+	border: 1px solid grey !important;
+	font-size: 0.7rem;
+}
+.back__icon {
+	color: white !important;
+	margin-left: 2rem;
+	cursor: pointer;
+	font-size: 3rem !important;
+}
+@media screen and (min-width: 1200px) {
+	.images img {
+		width: 40rem !important;
+		height: 100%;
+		border-radius: 4px;
+		margin: 0 1rem !important;
+	}
+}
+@media screen and (max-width: 768px) {
+	.game__stats {
+		flex: 1;
+		height: 68vh;
+	}
+	.images {
+		display: none;
+	}
+}

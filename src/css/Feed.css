@@ -1,0 +1,118 @@
+.feed {
+	margin: 3rem auto;
+	width: 90%;
+	height: 100%;
+}
+
+.right__box {
+	flex: 1;
+	min-height: 100vh;
+}
+.left__box {
+	min-height: 100%;
+
+	justify-content: center;
+	align-items: center;
+}
+
+.left__box section {
+	float: right;
+}
+.rightbox__info {
+	padding: 4rem;
+	flex: 5.5;
+}
+.info {
+	margin-top: 0.9rem;
+	font-size: 1.3rem !important;
+}
+.heading {
+	margin-top: 3rem;
+	font-weight: bolder !important;
+	font-family: georgia, arial, helvetica, sans-serif !important;
+	color: white;
+	font-size: 1.5rem !important;
+}
+.rightbox__info button {
+	margin-top: 2rem !important;
+	width: 14rem;
+}
+.rightbox__image {
+	border: none !important;
+	flex: 8;
+	display: flex;
+}
+.rightbox__image .controls {
+	flex: 4;
+
+	z-index: 999 !important;
+}
+.rightbox__image img {
+	width: 97% !important;
+
+	height: 97% !important;
+	border-radius: 25px !important;
+	object-fit: fill;
+}
+.updates {
+	flex: 5;
+}
+
+.right__info {
+	display: flex;
+	min-height: 100vh;
+	justify-content: center;
+	align-items: center;
+}
+@media screen and (min-width: 1200px) {
+	.right__box {
+		flex: 1;
+		max-height: 100vh;
+	}
+	.rightbox__info {
+		height: 80vh;
+		background-image: url('../assets/dark.jpg');
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: cover;
+	}
+	.info {
+		margin-top: 0.9rem;
+		font-size: 1.3rem !important;
+		color: white;
+		font-weight: bold !important;
+	}
+	.headeri {
+		text-decoration: underline;
+		color: red;
+		text-align: center;
+		font-weight: 800 !important;
+		font-family: georgia !important;
+		font-size: 3.5rem !important;
+		text-shadow: 2px 4px 2px rgba(200, 100, 220, 0.5);
+	}
+	.updates {
+		overflow: hidden;
+		display: grid;
+		grid-template-columns: auto auto auto auto;
+		max-height: 80vh;
+	}
+	.rightbox__image {
+		height: 70 !important;
+		object-fit: fill;
+		margin-top: 0.8rem;
+	}
+	.rightbox__image img {
+		width: 97% !important;
+		height: 97% !important;
+		border-radius: 25px !important;
+		object-fit: fill;
+	}
+}
+@media screen and (max-width: 768px) {
+	.rightbox__info {
+		min-height: 10rem !important;
+		background: white;
+		color: black;
+	}
+}

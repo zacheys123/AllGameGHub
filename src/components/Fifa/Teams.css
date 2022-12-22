@@ -1,0 +1,78 @@
+.teams {
+	display: grid;
+	width: 100%;
+	grid-template-columns: 1fr 1fr 1fr;
+	flex-wrap: wrap;
+	gap: 1rem;
+}
+.teams img {
+	height: 4rem;
+	width: 4rem;
+	transform: scale(1);
+	cursor: pointer;
+	transition: transform 0.4s ease-in-out;
+}
+.team {
+	transform: scale(1);
+	cursor: pointer;
+	transition: transform 0.4s ease-in-out;
+}
+.teams .team:hover {
+	transform: scale(1.3);
+}
+.player1_team {
+	flex: 5;
+}
+.player2_team {
+	flex: 5;
+}
+.team1_display {
+	background: navy;
+	padding: 0.7rem;
+	margin-top: 1rem;
+}
+.team2_display {
+	background: rgba(51, 128, 0, 0.431);
+	padding: 0.7rem;
+	margin-top: 1rem;
+	border-left: 4px solid grey;
+}
+
+.player__control {
+	width: 100%;
+}
+/* responsiveness */
+
+@media screen and (min-width: 992px) and (min-width: 1200px) {
+	.teams {
+		display: grid;
+		width: 100%;
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+		flex-wrap: wrap;
+		gap: 1rem;
+	}
+	.teams img {
+		height: 6rem;
+		width: 6rem;
+		transform: scale(1);
+		cursor: pointer;
+		transition: transform 0.4s ease-in-out;
+	}
+}
+
+@media screen and (max-width: 768px) and (min-width: 592px) {
+	.teams {
+		display: grid;
+		width: 100%;
+		grid-template-columns: 1fr 1fr 1fr;
+		flex-wrap: wrap;
+		gap: 1rem;
+	}
+	.teams img {
+		height: 5rem;
+		width: 4rem;
+		transform: scale(1);
+		cursor: pointer;
+		transition: transform 0.9s ease-in-out;
+	}
+}

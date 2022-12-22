@@ -1,0 +1,410 @@
+.main__games {
+	display: flex;
+	background: black;
+	flex-direction: column;
+	min-height: 88vh;
+	max-width: 100%;
+
+	margin: 0 auto 0 auto;
+}
+.maingames__container {
+	position: relative;
+	flex: 9;
+	margin-top: 1rem;
+	position: relative;
+	background-image: url('../assets/fifa2023.avif');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.maingame__header {
+	width: 100%;
+	margin-top: 0.9rem;
+}
+.choice {
+	position: absolute;
+	background: black;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-wrap: wrap;
+}
+.choice div {
+	display: flex;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	align-items: center;
+}
+.choice div img {
+	border-radius: 3px !important;
+	height: 12rem !important;
+	width: 12rem !important;
+	cursor: pointer;
+	transform: scale(1);
+	transition: all 0.6s ease-in-out;
+	margin-bottom: 0.5rem;
+}
+.choice div img:hover {
+	transform: scale(1.08);
+}
+.header__control {
+	background: rgb(246, 237, 237) !important;
+	color: black !important;
+	margin: auto !important;
+	width: 100% !important;
+}
+.header__disabled {
+	background: rgb(140, 138, 138) !important;
+	color: black !important;
+	margin: auto !important;
+	width: 100% !important;
+	pointer-events: none;
+	opacity: 0.9;
+}
+.active {
+	display: block !important;
+}
+.remove-active {
+	display: none;
+}
+.active-mode {
+	background: yellow !important;
+}
+/* games */
+.quick {
+	position: absolute;
+	width: 100%;
+	display: block !important;
+	background: transparent !important;
+	height: 100%;
+}
+.tournament {
+	background: yellow !important;
+	position: absolute;
+
+	width: 100%;
+	height: 100%;
+}
+.practice {
+	background: green !important;
+	position: absolute;
+
+	width: 100%;
+	height: 100%;
+}
+.bestof {
+	background: green !important;
+	position: absolute;
+
+	width: 100%;
+	height: 100%;
+}
+.career {
+	background: green !important;
+	position: absolute;
+
+	width: 100%;
+	height: 100%;
+}
+
+/* Game Mode */
+
+.modes__right {
+	flex: 9;
+	padding: 1rem;
+	position: relative;
+}
+
+.player1 {
+	float: right;
+	flex: 5;
+}
+.player2 {
+	flex: 5;
+}
+.player__control {
+	width: 90%;
+	background: rgb(113, 107, 107) !important;
+}
+.player__control1 {
+	padding: 0.6rem;
+	margin-top: 2rem;
+	width: 90%;
+}
+
+.player__name {
+	margin-top: 3rem;
+	padding: 0.6rem;
+	width: 90%;
+}
+
+.player__league {
+	margin-top: 1rem;
+	width: 90%;
+	padding: -1.4rem;
+}
+.modeRight__quickmatch {
+	flex: 6;
+}
+.preview {
+	flex: 3;
+	height: 65vh;
+	position: relative;
+	max-width: 90%;
+	overflow-y: scroll;
+	border-left: 2px solid grey;
+}
+.preview div {
+	list-style: none;
+	background: rgb(244, 229, 229);
+
+	width: 80%;
+	border-radius: 17px;
+	margin: 2rem auto 0 auto;
+}
+.preview .p1 {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	flex: 5;
+}
+
+.preview .p2 {
+	flex: 5;
+}
+.preview ul {
+	position: absolute;
+	margin: 0 auto 0 auto;
+	overflow: hidden;
+	min-height: 100% !important;
+	color: white;
+	max-width: 100% !important;
+}
+.amount input[type='number'] {
+	margin: 0.7rem;
+	flex: 2;
+	max-width: 3rem !important;
+}
+/* saving data */
+.game_info {
+	position: absolute;
+	max-width: 30rem;
+	background: black;
+	display: flex;
+	flex-direction: column;
+	padding: 1.5rem;
+	z-index: 999;
+	border-radius: 20px;
+}
+.preview h6 {
+	font-size: 0.8rem;
+	border: 1px solid rgb(138, 166, 26);
+	width: 90%;
+	font-family: georgia;
+	text-align: center;
+	padding: 0.5rem;
+	margin-top: 0.3rem;
+	font-weight: bold;
+	color: rgb(222, 17, 222);
+}
+
+.data {
+	display: flex;
+	flex-direction: row;
+}
+
+.goals {
+	width: 90%;
+	margin-top: 1rem;
+	font-weight: bold;
+}
+.outcome {
+	width: 80%;
+	margin: -4% auto 8% auto;
+	flex: 8;
+	height: 100%;
+	border-radius: 20px;
+	text-shadow: 2px 4px 5px rgba(5, 46, 95, 0.7);
+	font-size: 1rem;
+	text-align: center;
+}
+.player1 {
+	width: 90%;
+	margin-top: 1rem;
+	font-weight: bold;
+	color: rgb(238, 181, 38);
+}
+.player2 {
+	width: 90%;
+	margin-top: 1rem;
+	font-weight: bold;
+	color: rgb(238, 181, 38);
+}
+.preview .butt {
+	width: 70%;
+	margin: 0 auto 0.4rem 3rem !important;
+	font-family: georgia !important;
+	text-align: center !important;
+	font-weight: bold !important;
+	color: rgb(21, 145, 173) !important;
+}
+.main__stand {
+	background: white;
+	min-height: 70vh;
+}
+.main__stand {
+	background: white;
+	min-height: 67vh;
+}
+.main_fixtures {
+	background: rgb(14, 13, 13);
+	min-height: 70vh;
+}
+
+.fixtures {
+	padding: 0.7rem;
+	display: flex;
+	flex-direction: column;
+}
+.home__team {
+	color: white !important;
+	font-weight: bold;
+	padding: 0.5rem;
+	border-right: 2px solid grey;
+}
+.away__team {
+	color: white !important;
+	padding: 0.7rem;
+	font-weight: bold;
+	border-right: 2px solid grey;
+}
+.half {
+	color: white !important;
+	padding: 0.5rem;
+	font-size: 0.6rem !important;
+	font-weight: bold;
+	border-right: 2px solid grey;
+}
+.full {
+	color: white !important;
+	padding: 0.5rem;
+	font-size: 0.6rem !important;
+	font-weight: bold;
+	border-right: 2px solid grey;
+}
+.extra {
+	color: white !important;
+	padding: 0.5rem;
+	font-size: 0.6rem !important;
+	font-weight: bold;
+	border-right: 2px solid grey;
+}
+.penalty {
+	color: white !important;
+	padding: 0.5rem;
+	font-size: 0.6rem !important;
+	font-weight: bold;
+	border-right: 2px solid grey;
+}
+.status {
+	color: white !important;
+	padding: 0.5rem;
+	font-size: 0.8rem;
+	font-weight: bold;
+	border-right: 2px solid grey;
+}
+.fixtures__data {
+	display: flex;
+	align-items: center;
+	border: 1px solid grey;
+	justify-content: space-between;
+}
+.fixtures__data:hover {
+	background: rgb(33, 33, 33);
+	cursor: pointer;
+}
+.header__fixture {
+	display: flex;
+	align-items: center;
+	margin: 0.5rem;
+	font-weight: bold;
+	color: lightblue;
+}
+@media screen and (min-width: 1200px) {
+	.fixtures__data {
+		height: 2rem;
+	}
+	.header__fixture {
+		height: 4rem;
+	}
+	.header__fixture > img {
+		height: 1.9rem !important;
+		width: 1.9rem !important;
+	}
+	img {
+		height: 1.7rem;
+		width: 1.7rem;
+	}
+}
+
+/* 
+
+*/
+@media screen and (max-width: 768px) {
+	.maingames__container {
+		overflow: hidden;
+	}
+	.choice {
+		display: flex;
+		flex-direction: row;
+		overflow-y: auto;
+	}
+	.choice div {
+		width: 100%;
+	}
+	.choice div img {
+		width: 17rem !important;
+		object-fit: cover;
+		height: 17rem !important;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.maingames__container {
+		overflow: hidden;
+	}
+	.choice {
+		display: flex;
+		flex-direction: row;
+		overflow-y: auto;
+	}
+	.choice div {
+		width: 27%;
+	}
+}
+
+@media screen and (min-width: 992px) and (min-width: 800px) {
+	.choice {
+		display: flex;
+		flex-direction: row;
+		overflow-y: auto;
+	}
+	.choice div {
+		width: 25%;
+	}
+	.choice div img {
+		width: 12rem !important;
+		object-fit: cover;
+		height: 12rem !important;
+	}
+}
+@media screen and (min-width: 1200px) {
+	.choice {
+		display: flex;
+		flex-direction: row;
+		overflow-y: auto;
+	}
+	.choice div {
+		width: 14%;
+	}
+}

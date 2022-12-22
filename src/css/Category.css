@@ -1,0 +1,7 @@
+.active {
+	display: block;
+	background: white !important;
+}
+.remove-active {
+	display: none;
+}

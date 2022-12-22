@@ -1,0 +1,44 @@
+.all__games {
+	min-height: 85vh;
+	max-width: 100%;
+	background: white;
+	display: flex;
+	flex-direction: column;
+}
+.all__games .header {
+	display: flex;
+	flex: 1;
+	padding: 1rem;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.search {
+	background: rgb(61, 178, 168);
+	padding: 0.6rem;
+
+	margin-top: 0.9rem;
+	border: 1px solid lightgrey;
+	border-radius: 25px;
+}
+.players {
+	flex-grow: 1;
+
+	margin: 0 auto 1% auto;
+	width: 98%;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+		rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+		rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+.search input[type='text'] {
+	border: none;
+	outline: none;
+	background: inherit;
+	padding: 0.2rem;
+	margin-left: 0.3rem;
+	color: white;
+}
+.date__search {
+	display: flex;
+	flex-direction: row;
+}
