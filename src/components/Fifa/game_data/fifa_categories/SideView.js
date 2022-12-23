@@ -72,7 +72,7 @@ const SideView = ({ mygames }, { game_data, setTemp, rec_match }) => {
 						placeholder="Team one"
 					/>
 					<input
-						type="text"
+						type="number"
 						style={{
 							color: 'black',
 							width: '95%',
@@ -96,7 +96,7 @@ const SideView = ({ mygames }, { game_data, setTemp, rec_match }) => {
 						placeholder="Team two"
 					/>
 					<input
-						type="text"
+						type="number"
 						style={{
 							color: 'black',
 							width: '90%',

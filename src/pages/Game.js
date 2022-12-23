@@ -55,9 +55,12 @@ import metro from '../assets/metro.webp';
 import 'aos/dist/aos.css';
 import Aos from 'aos';
 const Game = (props) => {
+	const data = useRef(false);
 	const [showfifa, setShow] = useState((prev) => {
-		if (prev) {
-			return false;
+		if (data.current) {
+			if (prev) {
+				return false;
+			}
 		}
 		return true;
 	});
@@ -130,20 +133,32 @@ const Game = (props) => {
 		jumanjiref,
 		metroref,
 	};
+
 	useEffect(() => {
-		switch (userInfo) {
-			case 'Free':
-				setFree(allrefs);
-			case 'Amateur':
-				setAmateur(allrefs);
-			case 'World':
-				setWorld(allrefs);
-			case 'Premium':
-				setPremium(allrefs);
+		console.log(data);
+		data.current = true;
+		if (data.current) {
+			setTimeout(() => {
+				switch (userInfo) {
+					case 'Free':
+						setFree(allrefs);
+					case 'Amateur':
+						setAmateur(allrefs);
+					case 'World':
+						setWorld(allrefs);
+					case 'Premium':
+						setPremium(allrefs);
+				}
+			}, 2000);
 		}
+		return () => (data.current = false);
 	});
 	useEffect(() => {
 		Aos.init({ duration: 2000 });
+	}, []);
+	useEffect(() => {
+		data.current = false;
+		return () => (data.current = false);
 	}, []);
 
 	//

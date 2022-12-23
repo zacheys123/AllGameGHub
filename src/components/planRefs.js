@@ -38,3 +38,13 @@ export const setPremium = (ref) => {
 	ref?.chat?.current?.classList?.add('item');
 	ref?.share?.current?.classList?.add('item');
 };
+export const setNoPlan = (ref) => {
+	ref?.game?.current?.classList?.add('disabled');
+	ref?.summary?.current?.classList?.add('disabled');
+	ref?.league?.current?.classList?.add('disabled');
+	ref?.ranking?.current?.classList?.add('disabled');
+	ref?.vids?.current?.classList?.add('disabled');
+	ref?.access?.current?.classList?.add('disabled');
+	ref?.chat?.current?.classList?.add('disabled');
+	ref?.share?.current?.classList?.add('disabled');
+};

@@ -50,7 +50,7 @@ const Fifa = () => {
 						flex: 9,
 						background: 'black',
 						position: 'relative',
-						minHeight: '70vh',
+						minHeight: '85vh',
 					}}
 				>
 					<Box

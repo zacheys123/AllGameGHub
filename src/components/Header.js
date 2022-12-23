@@ -18,6 +18,7 @@ import {
 	setAmateur,
 	setWorld,
 	setPremium,
+	setNoPlan,
 } from './planRefs';
 
 const Header = (props) => {
@@ -89,6 +90,12 @@ const Header = (props) => {
 				setPremium(allrefs);
 		}
 	});
+	useEffect(() => {
+		switch (userInfo) {
+			case '':
+				setNoPlan(allrefs);
+		}
+	}, [userInfo]);
 
 	return (
 		<>

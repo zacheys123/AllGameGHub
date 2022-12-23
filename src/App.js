@@ -130,7 +130,15 @@ function App() {
 									</Priv_Admin>
 								}
 							/>
-							<Route exact path="/" element={<Home />} />
+							<Route
+								exact
+								path="/"
+								element={
+									<PrivateRoutes>
+										<Home />
+									</PrivateRoutes>
+								}
+							/>
 							<Route exact path="/login" element={<Login />} />
 							<Route
 								exact

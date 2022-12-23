@@ -131,14 +131,19 @@ const ConfirmData = ({ child_userdata }) => {
 			>
 				<div className="d-flex flex-column">
 					<h4 style={{ color: 'black' }}>Choose A Plan</h4>
-					{myid?.result?._id && (
-						<div style={{ fontWeight: 'bold', color: 'blue' }}>
-							(
-							<span style={{ color: 'red', fontWeight: '400' }}>
-								Currently:
-							</span>
-							{userInfo})
-						</div>
+					{myid?.result?._id ? (
+						userInfo !== '' ? (
+							<div style={{ fontWeight: 'bold', color: 'blue' }}>
+								<span style={{ color: 'red', fontWeight: '400' }}>
+									Currently:
+								</span>
+								{userInfo}
+							</div>
+						) : (
+							'Currently : No package'
+						)
+					) : (
+						''
 					)}
 				</div>
 				<Stack
