@@ -4,6 +4,17 @@ import { Stack, Box, TextField, Button } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
 import shortid from 'shortid';
 import { useGameContext } from '../../../../context/context_/GameContext';
+import gods from '../../../../assets/gods.jpg';
+import gtaimg from '../../../../assets/gta5.jpg';
+import pacific from '../../../../assets/pac.jpg';
+import tombraid from '../../../../assets/tomb.jpg';
+import nathan from '../../../../assets/nathan.jpg';
+import resident from '../../../../assets/resident.jpg';
+import spiderref from '../../../../assets/spider.jpg';
+import unchart4 from '../../../../assets/unchartered4.jpg';
+import lastimg from '../../../../assets/last.jpg';
+//
+import nba from '../../../../assets/nba.jpg';
 
 import SideView from './SideView';
 const Quick_Match = (props) => {
@@ -93,6 +104,37 @@ const Quick_Match = (props) => {
 	const values = { rec_match, game_data, setTemp };
 	return (
 		<Stack direction="row">
+			<Box
+				style={{
+					flex: '1.4',
+					height: '70vh',
+					display: 'flex',
+					flexDirection: 'column',
+				}}
+			>
+				{' '}
+				<h5 style={{ color: 'white', flex: '.4' }}>Other Games</h5>
+				<Box
+					sx={{
+						flex: '9',
+						position: 'relative',
+						overflowY: 'scroll',
+					}}
+				>
+					<div className="related">
+						<img src={gods} alt="" />
+						<img src={gtaimg} alt="" />
+						<img src={tombraid} alt="" />
+						<img src={pacific} alt="" />
+						<img src={unchart4} alt="" />
+						<img src={spiderref} alt="" />
+						<img src={nathan} alt="" />
+						<img src={lastimg} alt="" />
+						<img src={resident} alt="" />
+						<img src={nba} alt="" />
+					</div>
+				</Box>
+			</Box>
 			<Box
 				style={{
 					display: 'flex',

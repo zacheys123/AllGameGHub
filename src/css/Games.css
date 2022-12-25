@@ -2,7 +2,7 @@
 	display: flex;
 	background: black;
 	flex-direction: column;
-	min-height: 80vh;
+	min-height: 88vh;
 	max-width: 100%;
 
 	margin: 0 auto 0 auto;
@@ -143,11 +143,27 @@
 	width: 90%;
 	padding: -1.4rem;
 }
+/* start up Box */
+.related {
+	display: flex;
+	position: absolute;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 25px;
+}
+.related img {
+	height: 13rem !important;
+	border-radius: 0;
+	margin: 0 50%;
+	object-fit: cover;
+	width: 15rem !important;
+}
 .modeRight__quickmatch {
-	flex: 6;
+	flex: 7;
 }
 .preview {
-	flex: 3;
+	flex: 1.6;
 	height: 65vh;
 	position: relative;
 	max-width: 90%;

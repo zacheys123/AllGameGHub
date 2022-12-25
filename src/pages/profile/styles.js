@@ -83,3 +83,6 @@ export const Profile_Data = styled.div`
 		width: 100%;
 	}
 `;
+export const Validate = styled.div`
+	background: ${({ showValidate }) => (!showValidate ? '' : 'black')};
+`;

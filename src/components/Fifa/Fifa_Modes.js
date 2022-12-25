@@ -90,6 +90,7 @@ const Modes = (props) => {
 						initial={{ y: '-300px' }}
 						animate={{ y: 0, transition: { duration: 0.6 } }}
 						exit={{ y: '-300px', transition: { duration: 0.6 } }}
+						t
 					>
 						<Practice />
 					</motion.div>

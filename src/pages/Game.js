@@ -42,7 +42,7 @@ import unchart4 from '../assets/unchartered4.jpg';
 import lastimg from '../assets/last.jpg';
 //
 import nba from '../assets/nba.jpg';
-import assasins from '../assets/assasins.jpeg';
+import assasins from '../assets/assasins.jpg';
 import wwe from '../assets/wwe.jpg';
 import witch from '../assets/witch.jpg';
 import avengers from '../assets/avengers.webp';
@@ -152,7 +152,7 @@ const Game = (props) => {
 			}, 2000);
 		}
 		return () => (data.current = false);
-	});
+	}, []);
 	useEffect(() => {
 		Aos.init({ duration: 2000 });
 	}, []);
@@ -161,7 +161,7 @@ const Game = (props) => {
 		return () => (data.current = false);
 	}, []);
 
-	//
+	//function to disaply fifa page
 	const fifaMode = useCallback(() => {
 		fifa_action(setShow, setGame, fifa);
 	}, [showfifa]);

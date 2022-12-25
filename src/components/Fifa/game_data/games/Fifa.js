@@ -11,9 +11,9 @@ import {
 	Button,
 	MenuItem,
 } from '@mui/material';
-import vid from '../../../../assets/logo.jpg';
+import vid from '../../../../assets/fifa23.webp';
 import './css/Fifa.css';
-import fifa23 from '../../../../assets/fifa2023.avif';
+import fifa2023 from '../../../../assets/fifa2023.avif';
 import fifa22 from '../../../../assets/catwoman.jpg';
 import fifa21 from '../../../../assets/dark.jpg';
 import fifa20 from '../../../../assets/gta5.jpg';
@@ -65,8 +65,8 @@ const Fifa = () => {
 						}}
 					>
 						{' '}
-						<video
-							src={vid}
+						<img
+							src={fifa2023}
 							autoPlay={true}
 							controls
 							style={{
@@ -74,7 +74,7 @@ const Fifa = () => {
 								height: '70%',
 								width: '100%',
 							}}
-						></video>
+						></img>
 						<h4 align="center" style={{ color: 'lightgrey' }}>
 							Welcome to Gamehub Modes Selection Page
 						</h4>

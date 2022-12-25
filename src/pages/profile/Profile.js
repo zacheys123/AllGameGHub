@@ -16,6 +16,7 @@ import {
 	Image_Data,
 	MainStack,
 	Profile_Data,
+	Validate,
 } from './styles';
 import { Navigate, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -35,6 +36,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 const Profile = ({ child_userdata }) => {
 	const [my_id, setId] = useState(child_userdata);
+	const [showValidate, setValidate] = useState(false);
 
 	const {
 		main: {
@@ -46,14 +48,11 @@ const Profile = ({ child_userdata }) => {
 			updated_user,
 			loader,
 			disabled,
-			authorize,
 		},
 		setMainContext,
 	} = useMainContext();
 
 	const navigate = useNavigate();
-
-	const location = useLocation();
 
 	const [prof, setProf] = useState({
 		username: '',
@@ -144,7 +143,7 @@ const Profile = ({ child_userdata }) => {
 	// Get User Data
 	const getUserData = async (ev) => {
 		const baseUrl = 'http://localhost:5000';
-		const myprofile = { prevData, userId: id };
+
 		try {
 			const response = await API.get(`${baseUrl}/user/v2/${id}`);
 
@@ -181,7 +180,7 @@ const Profile = ({ child_userdata }) => {
 	React.useEffect(() => {
 		prevData.current = prof;
 		prevUser.current = updated_user;
-	}, [prof]);
+	}, [prof, updated_user]);
 	const closemodal = () => {
 		setMainContext({ type: 'CLOSEMODAL', ismodal });
 	};
@@ -189,6 +188,7 @@ const Profile = ({ child_userdata }) => {
 		setUsername(child_userdata?.result?.username);
 	}, [child_userdata?.result?._id, updated_user]);
 	const [disable, setDisabled] = useState(false);
+	const [disablepass, setDisabledPass] = useState(false);
 	React.useEffect(() => {
 		getUserData();
 		setDisabled(false);
@@ -478,96 +478,119 @@ const Profile = ({ child_userdata }) => {
 								onChange={handleChange}
 							/>
 						</Profile_Data>
-						<Profile_Data disabled={disable}>
-							<Box style={{ display: 'flex' }}>
-								<TextField
-									disabled={!disable}
-									InputLabelProps={{
-										shrink: true,
-										style: {
-											color: istheme ? 'grey' : 'grey',
-											marginLeft: '.5rem',
-										},
-									}}
-									name="password"
-									labelid="demo-simple-select-standard-label"
-									id="demo-simple-select-standard"
-									variant="standard"
-									label="New Password"
-									type={!passw ? 'password' : 'text'}
-									sx={{
-										color: 'white',
-										width: '100%',
-										borderLeft: !istheme ? '2px solid grey' : 'none',
-										borderBottom: '1px solid lightgrey',
-									}}
-									inputProps={{
-										style: {
-											marginLeft: '.5rem',
-											color: !istheme
-												? disabled
-													? 'black'
-													: 'white'
-												: 'black',
-										},
-									}}
-									value={prof.password || ''}
-									onChange={handleChange}
-								/>
-								{!passw ? (
-									<VisibilityOff
-										sx={{
-											cursor: 'pointer',
-											color: !istheme ? 'white' : 'black',
-										}}
-										onClick={() => {
-											setPassword((prof) => !prof);
-										}}
-									/>
-								) : (
-									<VisibilityOn
-										sx={{
-											cursor: 'pointer',
-											color: !istheme ? 'white' : 'black',
-										}}
-										onClick={() => {
-											setPassword((prof) => !prof);
-										}}
-									/>
-								)}
-							</Box>
-						</Profile_Data>
-						<Profile_Data disabled={disable}>
-							<TextField
-								disabled={!disable}
-								InputLabelProps={{
-									shrink: true,
-									style: {
-										color: istheme ? 'grey' : 'grey',
-										marginLeft: '.5rem',
-									},
-								}}
-								type={!passw ? 'password' : 'text'}
-								name="confirmpassword"
-								labelid="demo-simple-select-standard-label"
-								id="demo-simple-select-standard"
-								variant="standard"
-								label="Confirm New Password"
-								sx={{
-									color: 'white',
-									width: '100%',
-									borderLeft: !istheme ? '2px solid grey' : 'none',
-									borderBottom: '1px solid lightgrey',
-								}}
-								inputProps={{
-									style: {
-										marginLeft: '.5rem',
-										color: !istheme ? 'white' : 'black',
-									},
-								}}
-								onChange={handleChange}
-							/>
-						</Profile_Data>
+						<Button
+							style={{ marginTop: '1.6rem' }}
+							variant="outlined"
+							onClick={() => {
+								setValidate((prev) => !prev);
+								setDisabledPass((prev) => !prev);
+							}}
+						>
+							{!showValidate ? 'Change password' : 'Hide Dialogue'}
+						</Button>
+						<Validate showValidate={showValidate}>
+							{showValidate && (
+								<div>
+									<Profile_Data disabled={disablepass}>
+										<Box style={{ display: 'flex' }}>
+											<TextField
+												disabled={!disablepass}
+												InputLabelProps={{
+													shrink: true,
+													style: {
+														color: istheme ? 'grey' : 'grey',
+														marginLeft: '.5rem',
+													},
+												}}
+												name="password"
+												labelid="demo-simple-select-standard-label"
+												id="demo-simple-select-standard"
+												variant="standard"
+												label="New Password"
+												type={!passw ? 'password' : 'text'}
+												sx={{
+													color: 'white',
+													width: '100%',
+													borderLeft: !istheme
+														? '2px solid grey'
+														: 'none',
+													borderBottom: '1px solid lightgrey',
+												}}
+												inputProps={{
+													style: {
+														marginLeft: '.5rem',
+														color: !istheme
+															? disabled
+																? 'black'
+																: 'white'
+															: 'black',
+													},
+												}}
+												value={prof.password || ''}
+												onChange={handleChange}
+											/>
+											{!passw ? (
+												<VisibilityOff
+													sx={{
+														cursor: 'pointer',
+														color: !istheme ? 'white' : 'black',
+													}}
+													onClick={() => {
+														setPassword((prof) => !prof);
+													}}
+												/>
+											) : (
+												<VisibilityOn
+													sx={{
+														cursor: 'pointer',
+														color: !istheme ? 'white' : 'black',
+													}}
+													onClick={() => {
+														setPassword((prof) => !prof);
+													}}
+												/>
+											)}
+										</Box>
+									</Profile_Data>
+
+									<Profile_Data disabled={disablepass}>
+										<TextField
+											disabled={!disablepass}
+											InputLabelProps={{
+												shrink: true,
+												style: {
+													color: istheme ? 'grey' : 'grey',
+													marginLeft: '.5rem',
+												},
+											}}
+											type={!passw ? 'password' : 'text'}
+											name="confirmpassword"
+											labelid="demo-simple-select-standard-label"
+											id="demo-simple-select-standard"
+											variant="standard"
+											label="Confirm New Password"
+											sx={{
+												color: 'white',
+												width: '100%',
+												borderLeft: !istheme
+													? '2px solid grey'
+													: 'none',
+												borderBottom: '1px solid lightgrey',
+											}}
+											inputProps={{
+												style: {
+													marginLeft: '.5rem',
+													color: !istheme ? 'white' : 'black',
+												},
+											}}
+											value={prof.confirmpassword || ''}
+											onChange={handleChange}
+										/>
+									</Profile_Data>
+								</div>
+							)}
+						</Validate>
+
 						<Box style={{ color: 'red', textAlign: 'center' }}></Box>
 						<Box sx={{ marginTop: '2rem' }}>
 							<Button

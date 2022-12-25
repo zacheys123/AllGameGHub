@@ -500,6 +500,7 @@ const Header = (props) => {
 									padding: '1rem',
 									textAlign: 'center',
 								}}
+								onClick={() => window.location.reload()}
 							>
 								Refresh
 							</Typography>{' '}
