@@ -165,10 +165,10 @@
 	flex: 7;
 }
 .preview {
-	flex: 1.6;
+	flex: 1.9;
 	height: 65vh;
 	position: relative;
-	max-width: 90%;
+	max-width: 98%;
 	overflow-y: scroll;
 	border-left: 2px solid grey;
 }

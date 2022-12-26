@@ -354,7 +354,7 @@ const Header = (props) => {
 							to="/"
 							className="butt"
 							style={{
-								color: 'greenyellow',
+								color: !istheme ? 'greenyellow' : 'black',
 								listtype: 'none',
 								marginLeft: '1.3rem',
 								textDecoration: 'none',
@@ -370,7 +370,7 @@ const Header = (props) => {
 							className="butt"
 							to="/"
 							style={{
-								color: 'greenyellow',
+								color: !istheme ? 'greenyellow' : 'black',
 								listtype: 'none',
 								marginLeft: '1.3rem',
 								textDecoration: 'none',
@@ -385,7 +385,7 @@ const Header = (props) => {
 							{' '}
 							<Link
 								style={{
-									color: !istheme ? 'greenyellow' : 'white',
+									color: !istheme ? 'greenyellow' : 'black',
 									marginLeft: '1.3rem',
 									textDecoration: 'none',
 								}}
@@ -397,20 +397,6 @@ const Header = (props) => {
 							</Link>
 						</li>
 					)}
-					<li className={user?.result?._id ? 'item' : 'disabled'}>
-						<Link
-							className="butt"
-							to="/package-plan"
-							style={{
-								color: 'greenyellow',
-								listtype: 'none',
-								marginLeft: '1.3rem',
-								textDecoration: 'none',
-							}}
-						>
-							Change Plan
-						</Link>
-					</li>
 
 					<Box
 						sx={{
@@ -499,11 +485,25 @@ const Header = (props) => {
 									color: 'white',
 									padding: '1rem',
 									textAlign: 'center',
+									cursor: 'pointer',
 								}}
 								onClick={() => window.location.reload()}
 							>
 								Refresh
 							</Typography>{' '}
+							<Typography
+								variant="body2"
+								onClick={() => navigate('/package-plan')}
+								style={{
+									color: !istheme ? 'yellow' : 'black',
+									fontWeight: 'bold',
+									padding: '1rem',
+									cursor: 'pointer',
+									textAlign: 'center',
+								}}
+							>
+								Change Plan
+							</Typography>
 							<Button
 								style={{ marginLeft: '1rem !important' }}
 								onClick={handleLogout}

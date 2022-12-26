@@ -4,26 +4,26 @@ export const gamereducer = (state = {}, action) => {
 			return {
 				...state,
 				fifa: !action.payload,
-				goa: !state.goa,
-				gta: !state.gta,
-				head: !state.head,
+				goa: state.goa,
+				gta: state.gta,
+				head: state.head,
 				standings_check: true,
 			};
 		case 'GOD_OF_WAR':
 			return {
 				...state,
-				fifa: false,
-				goa: !action.payload,
-				gta: false,
-				head: true,
+				fifa: !action.payload,
+				goa: action.payload,
+				gta: !action.payload,
+				head: !action.payload,
 				standings_check: true,
 			};
 		case 'GTA':
 			return {
 				...state,
-				fifa: false,
-				goa: false,
-				gta: !action.payload,
+				fifa: !action.payload,
+				goa: !action.payload,
+				gta: action.payload,
 				head: true,
 				standings_check: true,
 			};

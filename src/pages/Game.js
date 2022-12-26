@@ -162,14 +162,16 @@ const Game = (props) => {
 	}, []);
 
 	//function to disaply fifa page
+	const [info_data, setInfo] = useState('Choose Games');
 	const fifaMode = useCallback(() => {
-		fifa_action(setShow, setGame, fifa);
+		setInfo(() => 'Fifa World Football');
+		fifa_action(setShow, setGame);
 	}, [showfifa]);
 	return (
 		<Box className="main__games">
 			<Box className="maingame__header">
 				<h1 style={{ color: 'white', textAlign: 'center' }}>
-					Choose Games
+					{info_data}
 				</h1>
 			</Box>
 			<Box className="maingames__container">

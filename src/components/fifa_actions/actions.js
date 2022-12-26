@@ -1,4 +1,4 @@
-export const fifa_action = (show, game, fifa) => {
+export const fifa_action = (show, game) => {
 	show((prev) => {
 		if (prev) {
 			return !prev;
@@ -6,6 +6,6 @@ export const fifa_action = (show, game, fifa) => {
 		return false;
 	});
 	setTimeout(() => {
-		game({ type: 'FIFA', payload: fifa });
+		game({ type: 'FIFA' });
 	}, 2000);
 };

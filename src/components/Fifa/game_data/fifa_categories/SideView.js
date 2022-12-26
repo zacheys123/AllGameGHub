@@ -65,7 +65,19 @@ const SideView = ({ mygames }, { game_data, setTemp, rec_match }) => {
 		const newGames = rec_match.filter((gam) => gam._id !== index);
 		setTemp(newGames);
 	};
-
+	const [mybutton, setButton] = useState(false);
+	const handleKey = (ev) => {
+		if (
+			extra_data.p1goals.length > 0 ||
+			extra_data.p2goals.length > 0 ||
+			extra_data.amount.length > 0 ||
+			extra_data.paid.length > 0 ||
+			extra_data.outcome
+		) {
+			setButton((prev) => !prev);
+		}
+		setButton((prev) => prev);
+	};
 	return (
 		<div>
 			<Stack direction="row" justifyContent="space-between">
@@ -80,7 +92,7 @@ const SideView = ({ mygames }, { game_data, setTemp, rec_match }) => {
 						placeholder="Team one"
 					/>
 					<input
-						type="number"
+						type="text"
 						style={{
 							color: 'black',
 							width: '95%',
@@ -90,6 +102,7 @@ const SideView = ({ mygames }, { game_data, setTemp, rec_match }) => {
 						name="p1goals"
 						value={extra_data.p1goals}
 						onChange={handleExtra}
+						onKeyUp={handleKey}
 					/>
 				</Box>
 
@@ -105,7 +118,7 @@ const SideView = ({ mygames }, { game_data, setTemp, rec_match }) => {
 						placeholder="Team two"
 					/>
 					<input
-						type="number"
+						type="text"
 						style={{
 							color: 'black',
 							width: '95%',
@@ -115,6 +128,7 @@ const SideView = ({ mygames }, { game_data, setTemp, rec_match }) => {
 						name="p2goals"
 						value={extra_data.p2goals}
 						onChange={handleExtra}
+						onKeyUp={handleKey}
 					/>
 				</Box>
 			</Stack>
@@ -123,21 +137,23 @@ const SideView = ({ mygames }, { game_data, setTemp, rec_match }) => {
 					<label style={{ color: 'white' }} htmlFor="amount">
 						Amount:
 						<input
-							type="number"
+							type="text"
 							name="amount"
 							id="amount"
 							onChange={handleExtra}
 							value={extra_data?.amount}
+							onKeyUp={handleKey}
 						/>
 					</label>
 					<label style={{ color: 'white' }} htmlFor="paid">
 						AmPaid:
 						<input
 							id="paid"
-							type="number"
+							type="text"
 							name="paid"
 							onChange={handleExtra}
 							value={extra_data?.paid}
+							onKeyUp={handleKey}
 						/>
 					</label>
 				</Box>{' '}
@@ -176,34 +192,39 @@ const SideView = ({ mygames }, { game_data, setTemp, rec_match }) => {
 					value={extra_data?.outcome}
 					className="outcome"
 					placeholder="Match Winner"
+					onKeyUp={handleKey}
 				/>
 			</div>
-			<Button
-				onClick={setGame}
-				variant="outlined"
-				type="submit"
-				className="butt"
-			>
-				{loading ? (
-					<CircularProgress
-						color="secondary"
-						sx={{
-							fontSize: '.6rem !important',
-							marginRight: '.6rem',
-						}}
-					/>
-				) : (
-					<> End/Save Match</>
-				)}
-			</Button>
-			<Button
-				variant="outlined"
-				type="submit"
-				onClick={() => remove(_id)}
-				className="butt"
-			>
-				Remove
-			</Button>
+			{mybutton && (
+				<>
+					<Button
+						onClick={setGame}
+						variant="outlined"
+						type="submit"
+						className="butt"
+					>
+						{loading ? (
+							<CircularProgress
+								color="secondary"
+								sx={{
+									fontSize: '.6rem !important',
+									marginRight: '.6rem',
+								}}
+							/>
+						) : (
+							<> End/Save Match</>
+						)}
+					</Button>
+					<Button
+						variant="outlined"
+						type="submit"
+						onClick={() => remove(_id)}
+						className="butt"
+					>
+						Remove
+					</Button>
+				</>
+			)}
 		</div>
 	);
 };

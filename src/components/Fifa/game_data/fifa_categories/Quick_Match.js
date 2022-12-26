@@ -150,7 +150,8 @@ const Quick_Match = (props) => {
 					style={{
 						display: 'flex',
 						flexDirection: 'column',
-						background: 'hsl(200,40%,70% )',
+						background: 'hsl(20,60%,80% )',
+						height: '70vh',
 					}}
 				>
 					<Stack
@@ -321,7 +322,7 @@ const Quick_Match = (props) => {
 					align="center"
 				>
 					Game Preview
-				</h4>{' '}
+				</h4>
 				<Box>
 					{temp_data &&
 						temp_data.map((mygames) => {
