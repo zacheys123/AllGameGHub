@@ -5,7 +5,7 @@ import { Game_Reg } from '../../../../context/actions/gameSlice';
 import CircularProgress from '@mui/material/CircularProgress';
 const SideView = ({ mygames }, { game_data, setTemp, rec_match }) => {
 	const {
-		modes_state: { game_info, loading },
+		modes_state: { game_info, loading, error },
 		setMode,
 	} = useGameContext();
 	const {
@@ -16,26 +16,34 @@ const SideView = ({ mygames }, { game_data, setTemp, rec_match }) => {
 		player2_team,
 		station,
 	} = mygames;
-	const [p1_goal, setp1_goal] = useState('');
-	const [p2_goal, setp2_goal] = useState('');
+
 	const [extra_data, setExtraData] = useState({
-		amount: '',
-		paid: '',
+		p1goals: 0,
+		p2goals: 0,
+		amount: 0,
+		paid: 0,
 		outcome: '',
 	});
 	const setGame = useCallback(
 		(ev) => {
 			ev.preventDefault();
+			if (
+				!extra_data.player1_goal.match(matchno) ||
+				!extra_data.player2_goal.match(matchno) ||
+				!extra_data.amount.match(matchno) ||
+				!extra_data.paid.match(matchno)
+			) {
+				setMode({ type: 'NUMBERS', payload: 'Only numbers allowed' });
+			}
 			const matchno = /^[0,9]+$/;
 			let newdata = {
 				...mygames,
 				...extra_data,
-				p1_goal,
-				p2_goal,
 			};
 			const currUser = JSON.parse(
 				window.localStorage.getItem('profile'),
 			);
+
 			Game_Reg(newdata, setMode, loading, currUser?.result?._id);
 		},
 		[extra_data, mygames],
@@ -62,7 +70,7 @@ const SideView = ({ mygames }, { game_data, setTemp, rec_match }) => {
 		<div>
 			<Stack direction="row" justifyContent="space-between">
 				<Box className="p1">
-					<h6 style={{ color: 'blue' }}>{player1?.toUpperCase()}</h6>
+					<h6 style={{ color: 'red' }}>{player1?.toUpperCase()}</h6>
 					<input
 						type="text"
 						disabled
@@ -78,15 +86,16 @@ const SideView = ({ mygames }, { game_data, setTemp, rec_match }) => {
 							width: '95%',
 							marginTop: '1rem',
 						}}
-						name="player1_goals"
-						value={p1_goal}
-						onChange={(ev) => setp1_goal(ev.target.value)}
+						id="p1goals"
+						name="p1goals"
+						value={extra_data.p1goals}
+						onChange={handleExtra}
 					/>
 				</Box>
 
 				<Box className="p2">
 					{' '}
-					<h6 style={{ color: 'blue' }}>{player2?.toUpperCase()}</h6>
+					<h6 style={{ color: 'red' }}>{player2?.toUpperCase()}</h6>
 					<input
 						disabled
 						type="text"
@@ -99,18 +108,19 @@ const SideView = ({ mygames }, { game_data, setTemp, rec_match }) => {
 						type="number"
 						style={{
 							color: 'black',
-							width: '90%',
+							width: '95%',
 							marginTop: '1rem',
 						}}
-						name="player2_goals"
-						value={p2_goal}
-						onChange={(ev) => setp2_goal(ev.target.value)}
+						id="p2goals"
+						name="p2goals"
+						value={extra_data.p2goals}
+						onChange={handleExtra}
 					/>
 				</Box>
 			</Stack>
 			<Box>
 				<Box className="amount">
-					<label style={{ color: 'black' }} htmlFor="amount">
+					<label style={{ color: 'white' }} htmlFor="amount">
 						Amount:
 						<input
 							type="number"
@@ -120,7 +130,7 @@ const SideView = ({ mygames }, { game_data, setTemp, rec_match }) => {
 							value={extra_data?.amount}
 						/>
 					</label>
-					<label style={{ color: 'black' }} htmlFor="paid">
+					<label style={{ color: 'white' }} htmlFor="paid">
 						AmPaid:
 						<input
 							id="paid"
@@ -154,7 +164,9 @@ const SideView = ({ mygames }, { game_data, setTemp, rec_match }) => {
 					color: 'red',
 					fontWeight: 'bold',
 				}}
-			></Box>
+			>
+				{error}
+			</Box>
 
 			<div className="outcome">
 				<input

@@ -103,7 +103,10 @@ const Quick_Match = (props) => {
 
 	const values = { rec_match, game_data, setTemp };
 	return (
-		<Stack direction="row">
+		<Stack
+			direction="row"
+			sx={{ background: 'black', height: '80vh !important' }}
+		>
 			<Box
 				style={{
 					flex: '1.4',
@@ -147,7 +150,7 @@ const Quick_Match = (props) => {
 					style={{
 						display: 'flex',
 						flexDirection: 'column',
-						background: 'hsl(20,30%,89% )',
+						background: 'hsl(200,40%,70% )',
 					}}
 				>
 					<Stack
@@ -167,7 +170,7 @@ const Quick_Match = (props) => {
 									labelid="demo-simple-select-standard-label"
 									id="demo-simple-select-standard"
 									variant="filled"
-									label="Team"
+									label="Enter Team *"
 									sx={{ color: 'white', width: '100%' }}
 									value={player_data?.player1_team}
 									onChange={handleChange}
@@ -213,7 +216,7 @@ const Quick_Match = (props) => {
 									name="player2_team"
 									labelid="demo-simple-select-standard-label"
 									id="demo-simple-select-standard"
-									label="Team"
+									label="Enter Team *"
 									variant="filled"
 									sx={{ width: '100%' }}
 									value={player_data?.player2_team}
@@ -306,23 +309,31 @@ const Quick_Match = (props) => {
 					</Stack>
 				</div>
 			</Box>
-			<Box className="preview">
+			<Box
+				sx={{ display: 'flex', flexDirection: 'column' }}
+				className="preview"
+			>
 				<h4
-					style={{ textDecoration: 'underline', color: 'lightgrey' }}
+					style={{
+						textDecoration: 'underline',
+						color: 'lightgrey',
+					}}
 					align="center"
 				>
 					Game Preview
-				</h4>
-				{temp_data &&
-					temp_data.map((mygames) => {
-						return (
-							<SideView
-								key={mygames._id}
-								mygames={mygames}
-								values={values}
-							/>
-						);
-					})}
+				</h4>{' '}
+				<Box>
+					{temp_data &&
+						temp_data.map((mygames) => {
+							return (
+								<SideView
+									key={mygames._id}
+									mygames={mygames}
+									values={values}
+								/>
+							);
+						})}
+				</Box>
 			</Box>
 		</Stack>
 	);

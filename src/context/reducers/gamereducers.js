@@ -117,6 +117,11 @@ export const gamereducer = (state = {}, action) => {
 				...state,
 				team_fixtures: action.payload,
 			};
+		case 'Numbers':
+			return {
+				...state,
+				error: action.payload,
+			};
 
 		default:
 			return {
