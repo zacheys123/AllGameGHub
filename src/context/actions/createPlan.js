@@ -1,5 +1,5 @@
 import API from '../api';
-const baseUrl = process.env.REACT_APP_HOST;
+const baseUrl = 'http://localhost:5000';
 export const createPlan = async (
 	plan,
 	navigate,

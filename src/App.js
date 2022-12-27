@@ -59,7 +59,7 @@ function App() {
 
 	//
 	const getUserData = async (ev) => {
-		const baseUrl = process.env.REACT_APP_HOST;
+		const baseUrl = 'http://localhost:5000';
 		const myprofile = JSON.parse(
 			window.localStorage.getItem('profile'),
 		);

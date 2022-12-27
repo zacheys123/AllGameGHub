@@ -31,7 +31,7 @@ const AllGames = () => {
 		try {
 			setLoading(true);
 			let response = await axios.get(
-				`${process.env.REACT_APP_HOST}/game/${currUser?.result?._id}`,
+				`http://localhost:5000/game/${currUser?.result?._id}`,
 				{
 					cancelToken: source.token,
 				},

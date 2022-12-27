@@ -1,5 +1,5 @@
 import API from '../api';
-let baseUrl = process.env.REACT_APP_HOST;
+let baseUrl = 'http://localhost:5000';
 export const Game_Reg = async (
 	player_data,
 	setMode,

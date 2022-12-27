@@ -1,6 +1,6 @@
 import axios from 'axios';
 import API from '../api';
-const baseUrl = process.env.REACT_APP_HOST;
+const baseUrl = 'http://localhost:5000';
 
 export const update_user = async (
 	setMainContext,
