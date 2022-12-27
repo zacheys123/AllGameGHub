@@ -281,17 +281,18 @@ const Quick_Match = (props) => {
 					>
 						{!game_info && (
 							<button
+								className="button"
 								value
 								onClick={startmatch}
 								variant="outlined"
 								style={{
-									width: '40% !important',
-									padding: '.6rem 1.7rem .6rem 1.7rem',
-									marginTop: '-1rem',
+									// width: '40% !important',
+									// padding: '.6rem 1.7rem .6rem 1.7rem',
+									// marginTop: '-1rem',
 									color: 'yellow',
 									background: 'purple',
-									fontWeight: 'bold',
-									fontFamily: 'helveticaa',
+									// fontWeight: 'bold',
+									// fontFamily: 'helveticaa',
 								}}
 							>
 								{loader ? (
@@ -310,10 +311,8 @@ const Quick_Match = (props) => {
 					</Stack>
 				</div>
 			</Box>
-			<Box
-				sx={{ display: 'flex', flexDirection: 'column' }}
-				className="preview"
-			>
+
+			<Box className="preview">
 				<h4
 					style={{
 						textDecoration: 'underline',
@@ -323,18 +322,16 @@ const Quick_Match = (props) => {
 				>
 					Game Preview
 				</h4>
-				<Box>
-					{temp_data &&
-						temp_data.map((mygames) => {
-							return (
-								<SideView
-									key={mygames._id}
-									mygames={mygames}
-									values={values}
-								/>
-							);
-						})}
-				</Box>
+				{temp_data &&
+					temp_data.map((mygames) => {
+						return (
+							<SideView
+								key={mygames._id}
+								mygames={mygames}
+								values={values}
+							/>
+						);
+					})}
 			</Box>
 		</Stack>
 	);

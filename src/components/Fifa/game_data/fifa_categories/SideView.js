@@ -5,7 +5,7 @@ import { Game_Reg } from '../../../../context/actions/gameSlice';
 import CircularProgress from '@mui/material/CircularProgress';
 const SideView = ({ mygames }, { game_data, setTemp, rec_match }) => {
 	const {
-		modes_state: { game_info, loading, error },
+		modes_state: { game_info, loading, error, iserror },
 		setMode,
 	} = useGameContext();
 	const {
@@ -18,23 +18,16 @@ const SideView = ({ mygames }, { game_data, setTemp, rec_match }) => {
 	} = mygames;
 
 	const [extra_data, setExtraData] = useState({
-		p1goals: 0,
-		p2goals: 0,
-		amount: 0,
-		paid: 0,
+		p1goals: '',
+		p2goals: '',
+		amount: '',
+		paid: '',
 		outcome: '',
 	});
 	const setGame = useCallback(
 		(ev) => {
 			ev.preventDefault();
-			if (
-				!extra_data.player1_goal.match(matchno) ||
-				!extra_data.player2_goal.match(matchno) ||
-				!extra_data.amount.match(matchno) ||
-				!extra_data.paid.match(matchno)
-			) {
-				setMode({ type: 'NUMBERS', payload: 'Only numbers allowed' });
-			}
+
 			const matchno = /^[0,9]+$/;
 			let newdata = {
 				...mygames,
@@ -43,11 +36,36 @@ const SideView = ({ mygames }, { game_data, setTemp, rec_match }) => {
 			const currUser = JSON.parse(
 				window.localStorage.getItem('profile'),
 			);
-
-			Game_Reg(newdata, setMode, loading, currUser?.result?._id);
+			if (
+				extra_data.p1goals &&
+				extra_data.p2goals &&
+				extra_data.amount &&
+				extra_data.paid &&
+				extra_data.outcome
+			) {
+				if (
+					extra_data.p1goals.match(matchno) ||
+					extra_data.p2goals.match(matchno) ||
+					extra_data.amount.match(matchno) ||
+					extra_data.paid.match(matchno)
+				) {
+					Game_Reg(newdata, setMode, loading, currUser?.result?._id);
+					window.localStorage.removeItem('rec_games');
+				}
+				setMode({
+					type: 'EMPTY',
+					payload: 'Only Numbers[0-9] are allowed',
+				});
+			} else {
+				setMode({
+					type: 'EMPTY',
+					payload: 'No empty inputs allowed',
+				});
+			}
 		},
 		[extra_data, mygames],
 	);
+
 	const handleExtra = (ev) => {
 		setExtraData((extra_data) => {
 			return { ...extra_data, [ev.target.name]: ev.target.value };
@@ -68,11 +86,11 @@ const SideView = ({ mygames }, { game_data, setTemp, rec_match }) => {
 	const [mybutton, setButton] = useState(false);
 	const handleKey = (ev) => {
 		if (
-			extra_data.p1goals.length > 0 ||
-			extra_data.p2goals.length > 0 ||
-			extra_data.amount.length > 0 ||
-			extra_data.paid.length > 0 ||
-			extra_data.outcome
+			extra_data.p1goals.length > 0 &&
+			extra_data.p2goals.length > 0 &&
+			extra_data.amount.length >= 2 &&
+			extra_data.paid.length >= 1 &&
+			extra_data.outcome.length > 0
 		) {
 			setButton((prev) => !prev);
 		}
@@ -174,16 +192,17 @@ const SideView = ({ mygames }, { game_data, setTemp, rec_match }) => {
 					</label>{' '}
 				</Box>
 			</Box>
-			<Box
-				sx={{
-					textAlign: 'center',
-					color: 'red',
-					fontWeight: 'bold',
-				}}
-			>
-				{error}
-			</Box>
-
+			{iserror && (
+				<Box
+					sx={{
+						textAlign: 'center',
+						color: 'red',
+						fontWeight: 'bold',
+					}}
+				>
+					{error}
+				</Box>
+			)}
 			<div className="outcome">
 				<input
 					type="text"
@@ -201,7 +220,7 @@ const SideView = ({ mygames }, { game_data, setTemp, rec_match }) => {
 						onClick={setGame}
 						variant="outlined"
 						type="submit"
-						className="butt"
+						className="butt button"
 					>
 						{loading ? (
 							<CircularProgress

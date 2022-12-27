@@ -35,6 +35,7 @@ const initial_mode = {
 	player2_team: '',
 	game_info: false,
 	error: '',
+	iserror: false,
 	p_data: {},
 	modes: {},
 };

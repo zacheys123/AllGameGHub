@@ -116,6 +116,7 @@ const ConfirmData = ({ child_userdata }) => {
 		setId(JSON.parse(window.localStorage.getItem('profile')));
 		prevData.current = plan;
 	}, [userInfo]);
+	console.log(userInfo);
 	return (
 		<Container sx={{ height: '85vh' }}>
 			<Box

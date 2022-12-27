@@ -147,7 +147,7 @@ function App() {
 							/>{' '}
 							<Route
 								exact
-								path="/package-plan"
+								path="/v2/package-plan"
 								element={
 									<PackagePlan child_userdata={child_userdata} />
 								}

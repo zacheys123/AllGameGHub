@@ -164,6 +164,41 @@
 .modeRight__quickmatch {
 	flex: 7;
 }
+/* Button Start Match */
+.button {
+	position: relative;
+
+	border: none;
+	font-size: 28px;
+
+	padding: 8px;
+	width: 130px;
+	text-align: center;
+	transition-duration: 0.4s;
+	text-decoration: none;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+.button:after {
+	content: '';
+	background: linear-gradient(hsl(20, 40%, 50%), hsl(200, 20%, 70%));
+	display: block;
+	position: absolute;
+	padding-top: 300%;
+	padding-left: 350%;
+	margin-left: -20px !important;
+	margin-top: -120%;
+	opacity: 0;
+	transition: all 0.8s;
+}
+
+.button:active:after {
+	padding: 0;
+	margin: 0;
+	opacity: 1;
+	transition: 0s;
+}
 .preview {
 	flex: 1.9;
 	height: 65vh;

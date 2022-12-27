@@ -83,6 +83,18 @@ export const mode_reducers = (state = {}, action) => {
 				...state,
 				loading: true,
 			};
+		case 'EMPTY':
+			return {
+				...state,
+				error: action.payload,
+				iserror: !state.iserror,
+			};
+		case 'Numbers':
+			return {
+				...state,
+				error: action.payload,
+				iserror: !state.iserror,
+			};
 		default:
 			return {
 				...state,

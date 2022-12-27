@@ -493,7 +493,10 @@ const Header = (props) => {
 							</Typography>{' '}
 							<Typography
 								variant="body2"
-								onClick={() => navigate('/package-plan')}
+								onClick={() => {
+									navigate('/v2/package-plan');
+									setProfile((prev) => !prev);
+								}}
 								style={{
 									color: !istheme ? 'yellow' : 'black',
 									fontWeight: 'bold',
