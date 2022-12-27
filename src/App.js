@@ -49,7 +49,7 @@ function App() {
 			setTimeout(() => {
 				spinner.style.display = 'none';
 				setLoader(false);
-			}, 200);
+			}, 2000);
 		}
 	};
 	useEffect(() => {
