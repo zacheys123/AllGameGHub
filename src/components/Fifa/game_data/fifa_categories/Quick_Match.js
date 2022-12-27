@@ -19,6 +19,7 @@ import nba from '../../../../assets/nba.jpg';
 import SideView from './SideView';
 const Quick_Match = (props) => {
 	const {
+		game: { fifa },
 		modes_state: { game_info, loading },
 		setMode,
 	} = useGameContext();
@@ -92,7 +93,7 @@ const Quick_Match = (props) => {
 			'rec_games',
 			JSON.stringify(rec_match),
 		);
-	}, [rec_match]);
+	}, [rec_match, fifa]);
 
 	const handleChange = (ev) => {
 		setPlayerData((playerdata) => ({

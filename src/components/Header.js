@@ -157,14 +157,16 @@ const Header = (props) => {
 									Game
 								</Button>
 							</Link>
-							<Link
+							<li
 								ref={summary}
 								className={user?.result?._id ? 'item' : 'disabled'}
-								to="/summary"
 							>
 								{' '}
 								<Button
-									onClick={() => setMore((prev) => !prev)}
+									onClick={() => {
+										setMore((prev) => !prev);
+										window.open('/summary');
+									}}
 									style={{
 										color: !istheme ? 'white' : 'darkgreen',
 										border: !istheme
@@ -176,7 +178,7 @@ const Header = (props) => {
 								>
 									Summary
 								</Button>
-							</Link>
+							</li>
 							<Link
 								ref={league}
 								className={user?.result?._id ? 'item' : 'disabled'}

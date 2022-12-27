@@ -28,7 +28,7 @@ const SideView = ({ mygames }, { game_data, setTemp, rec_match }) => {
 		(ev) => {
 			ev.preventDefault();
 
-			const matchno = /^[0,9]+$/;
+			const matchno = /^\d+$/;
 			let newdata = {
 				...mygames,
 				...extra_data,
@@ -44,16 +44,18 @@ const SideView = ({ mygames }, { game_data, setTemp, rec_match }) => {
 				extra_data.outcome
 			) {
 				if (
-					extra_data.p1goals.match(matchno) ||
-					extra_data.p2goals.match(matchno) ||
-					extra_data.amount.match(matchno) ||
-					extra_data.paid.match(matchno)
+					matchno.test(extra_data.amount) ||
+					matchno.test(extra_data.paid)
+					// 	extra_data.p2goals.match(matchno) ||
+					// 	extra_data.amount.match(matchno) ||
+					// 	extra_data.paid.match(matchno)
 				) {
 					Game_Reg(newdata, setMode, loading, currUser?.result?._id);
 					window.localStorage.removeItem('rec_games');
+					window.localStorage.removeItem('games');
 				}
 				setMode({
-					type: 'EMPTY',
+					type: 'NUMBERS',
 					payload: 'Only Numbers[0-9] are allowed',
 				});
 			} else {
@@ -83,18 +85,18 @@ const SideView = ({ mygames }, { game_data, setTemp, rec_match }) => {
 		const newGames = rec_match.filter((gam) => gam._id !== index);
 		setTemp(newGames);
 	};
-	const [mybutton, setButton] = useState(false);
+	const [mybutton, setButton] = useState(true);
 	const handleKey = (ev) => {
-		if (
-			extra_data.p1goals.length > 0 &&
-			extra_data.p2goals.length > 0 &&
-			extra_data.amount.length >= 2 &&
-			extra_data.paid.length >= 1 &&
-			extra_data.outcome.length > 0
-		) {
-			setButton((prev) => !prev);
-		}
-		setButton((prev) => prev);
+		// if (
+		// 	extra_data.p1goals.length > 0 &&
+		// 	extra_data.p2goals.length > 0 &&
+		// 	extra_data.amount.length >= 2 &&
+		// 	extra_data.paid.length >= 1 &&
+		// 	extra_data.outcome.length > 0
+		// ) {
+		// 	setButton((prev) => !prev);
+		// }
+		// setButton((prev) => prev);
 	};
 	return (
 		<div>
