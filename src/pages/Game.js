@@ -64,14 +64,8 @@ const Game = (props) => {
 		}
 		return true;
 	});
-	const [standings, setStandings] = useState('');
-	const [year, getYear] = useState('');
-	const {
-		game: { fifa, goa, gta, head },
-		modes_state: { mode_choice },
-		setGame,
-		setMode,
-	} = useGameContext();
+
+	const { setGame, setMode } = useGameContext();
 	const {
 		main: { userInfo },
 

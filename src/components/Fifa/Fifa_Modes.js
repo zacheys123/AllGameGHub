@@ -20,27 +20,6 @@ import { motion } from 'framer-motion';
 import { useGameContext } from '../../context/context_/GameContext';
 import Teams from './Teams';
 const Modes = (props) => {
-	const {
-		modes_state: { game_info, p_data },
-		setMode,
-	} = useGameContext();
-
-	const [error, setError] = useState('');
-	const [amount, setAmount] = useState(30);
-	const [p1_goal, setP1Goal] = useState(0);
-	const [p2_goal, setP2Goal] = useState(0);
-	const onSubmit = useCallback(
-		(ev) => {
-			ev.preventDefault();
-			let newdata = { ...p_data, amount, p1_goal, p2_goal };
-			if (p_data) {
-				Game_Reg(newdata);
-			}
-
-			setError('please enter your email and password');
-		},
-		[p_data],
-	);
 	const quickref = useRef();
 	const tournref = useRef();
 	const pracref = useRef();
