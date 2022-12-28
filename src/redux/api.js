@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const API = axios.create({
-	baseURL: process.env.REACT_APP_HOST,
+	baseURL: 'http://localhost:3500',
 });
 
 export const signin = (formdata) =>

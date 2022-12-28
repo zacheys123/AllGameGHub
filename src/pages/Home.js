@@ -6,14 +6,37 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Layout, Header, Contact } from '../components';
 import Feed from '../components/layout/feed/Feed';
 import '../css/Global.css';
-
+import API from '../context/api';
 const Home = () => {
 	const {
-		main: { currentuser, contact },
-		maindispatch,
+		main: { userInfo, contact },
+
+		setMainContext,
 	} = useMainContext();
-	const navigate = useNavigate();
 	const { user } = useSelector((state) => ({ ...state.auth }));
+	const getUserData = async (ev) => {
+		const baseUrl = 'http://localhost:3500';
+		const myprofile = JSON.parse(
+			window.localStorage.getItem('profile'),
+		);
+		let id = myprofile?.result?._id;
+		console.log(id);
+		try {
+			const response = await API.get(`${baseUrl}/user/v2/${id}`);
+			setMainContext({
+				type: 'FILL_USER',
+				payload: response?.data?.package,
+			});
+		} catch (error) {
+			console.log(error.message);
+		}
+	};
+	useEffect(() => {
+		getUserData();
+	}, [user?.result?._id]);
+
+	const navigate = useNavigate();
+
 	return (
 		<div style={{ minHeight: '84.7vh' }}>
 			{/*// {user?.result?._id && user?.result?._id ? (

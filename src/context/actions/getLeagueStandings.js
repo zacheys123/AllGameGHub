@@ -9,7 +9,7 @@ export const getStandings = async (
 ) => {
 	const options = {
 		method: 'GET',
-		url: 'http://localhost:5000/standings',
+		url: 'http://localhost:3500/standings',
 		params: { season: year, league: standings },
 	};
 	try {

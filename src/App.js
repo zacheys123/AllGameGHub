@@ -28,7 +28,7 @@ import Footer from './components/Footer';
 import Profile from './pages/profile/Profile';
 import Priv_Admin from './components/Priv_Admin';
 import { LineAxisOutlined } from '@mui/icons-material';
-import API from './context/api';
+
 function App() {
 	const dispatch = useDispatch();
 	const user = JSON.parse(localStorage.getItem('profile'));
@@ -58,31 +58,11 @@ function App() {
 	}, []);
 
 	//
-	const getUserData = async (ev) => {
-		const baseUrl = 'http://localhost:5000';
-		const myprofile = JSON.parse(
-			window.localStorage.getItem('profile'),
-		);
-		let id = myprofile?.result?._id;
-		console.log(id);
-		try {
-			const response = await API.get(`${baseUrl}/user/v2/${id}`);
-			setMainContext({
-				type: 'FILL_USER',
-				payload: response?.data?.package,
-			});
-		} catch (error) {
-			console.log(error.message);
-		}
-	};
-	useEffect(() => {
-		console.log(userInfo);
 
-		getUserData();
-	}, []);
 	const getChildUser = (childData) => {
 		return setChildUser(childData);
 	};
+
 	return (
 		<>
 			{loader && (

@@ -142,7 +142,7 @@ const Profile = ({ child_userdata }) => {
 
 	// Get User Data
 	const getUserData = async (ev) => {
-		const baseUrl = 'http://localhost:5000';
+		const baseUrl = 'http://localhost:3500';
 
 		try {
 			const response = await API.get(`${baseUrl}/user/v2/${id}`);

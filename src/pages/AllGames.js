@@ -31,7 +31,7 @@ const AllGames = () => {
 		try {
 			setLoading(true);
 			let response = await axios.get(
-				`http://localhost:5000/game/${currUser?.result?._id}`,
+				`http://localhost:3500/game/${currUser?.result?._id}`,
 				{
 					cancelToken: source.token,
 				},
@@ -57,7 +57,7 @@ const AllGames = () => {
 	const navigate = useNavigate();
 
 	const searchInput = () => {
-		let sortedvalue = allgames.games;
+		let sortedvalue = allgames?.games;
 		if (searchquery) {
 			sortedvalue = sortedvalue.filter((choose_game) => {
 				if (

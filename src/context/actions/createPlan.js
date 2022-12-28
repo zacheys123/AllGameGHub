@@ -1,5 +1,5 @@
 import API from '../api';
-const baseUrl = 'http://localhost:5000';
+const baseUrl = 'http://localhost:3500';
 export const createPlan = async (
 	plan,
 	navigate,
