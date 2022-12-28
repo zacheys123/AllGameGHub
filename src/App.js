@@ -1,7 +1,12 @@
 import { useEffect, useState } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import {
+	BrowserRouter,
+	Routes,
+	Route,
+	Navigate,
+} from 'react-router-dom';
 
 import { setUser } from './redux/features/authSlice';
 import { useSelector } from 'react-redux';
@@ -72,7 +77,17 @@ function App() {
 						<hr style={{ width: '95%', margin: 'auto' }} />
 						<ToastContainer />
 						<Routes>
-							<Route exact path="/summary" element={<AllGames />} />
+							<Route
+								exact
+								path="/summary"
+								element={
+									user?.result?._id ? (
+										<AllGames />
+									) : (
+										<Navigate to="/login" />
+									)
+								}
+							/>
 							<Route
 								exact
 								path="/standings"
