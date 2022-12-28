@@ -15,7 +15,7 @@ const Home = () => {
 	} = useMainContext();
 	const { user } = useSelector((state) => ({ ...state.auth }));
 	const getUserData = async (ev) => {
-		const baseUrl = 'http://localhost:3500';
+		const baseUrl = process.env.REACT_APP_HOST;
 		const myprofile = JSON.parse(
 			window.localStorage.getItem('profile'),
 		);
