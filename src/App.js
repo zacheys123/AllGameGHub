@@ -125,7 +125,17 @@ function App() {
 									</Priv_Admin>
 								}
 							/>
-							<Route exact path="/" element={<Home />} />
+							<Route
+								exact
+								path="/"
+								element={
+									user?.result?._id ? (
+										<Home />
+									) : (
+										<Navigate to="/login" />
+									)
+								}
+							/>
 							<Route exact path="/login" element={<Login />} />
 							<Route
 								exact
