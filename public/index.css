@@ -1,3 +1,5 @@
+/* "deploy": "npm build && npx thirdweb@latest upload build",*/
+
 body {
 	margin: 0;
 	font-family: Roboto, Helvetica, Arial, sans-serif;
